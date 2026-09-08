@@ -20,6 +20,11 @@ ENV/
 *.swp
 *.swo
 
+# Testing
+.pytest_cache/
+*/.pytest_cache/*
+
 # OS files
 .DS_Store
 Thumbs.db
+
