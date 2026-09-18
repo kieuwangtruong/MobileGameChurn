@@ -6,11 +6,13 @@ def run_database_pipeline():
     base_dir = Path(__file__).resolve().parent.parent
     raw_path = base_dir / 'data' / 'raw' / 'online_gaming_behavior_dataset.csv'
     model_path = base_dir / 'models' / 'best_model.joblib'
+    scaler_path = base_dir / 'models' / 'scaler.joblib'
     feature_names_path = base_dir / 'models' / 'model_features.joblib'
     db_path = base_dir / 'data' / 'game_analytics.db'
 
     df = pd.read_csv(raw_path)
     model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
     feature_names = joblib.load(feature_names_path)
 
     # Biến đổi đặc trưng để đưa qua mô hình
@@ -26,7 +28,8 @@ def run_database_pipeline():
     df_encoded = pd.get_dummies(df_feat, columns=['GameGenre', 'Location'], drop_first=True, dtype=int)
 
     X = df_encoded[feature_names]
-    proba = model.predict_proba(X)[:, 1]
+    X_scaled = scaler.transform(X)
+    proba = model.predict_proba(X_scaled)[:, 1]
 
     df['IsChurn'] = (df['EngagementLevel'] == 'Low').astype(int)
     df['Churn_Probability'] = np.round(proba, 4)
@@ -43,7 +46,7 @@ def run_database_pipeline():
     # Xuất file CSV sạch sẵn sàng cho Power BI
     powerbi_csv = base_dir / 'data' / 'processed' / 'powerbi_game_churn_dataset.csv'
     df.to_csv(powerbi_csv, index=False)
-    print(f"✅ Pipeline hoàn tất: Đã nạp {len(df):,} bản ghi vào {db_path} và xuất {powerbi_csv}!")
+    print(f"[OK] Pipeline hoan tat: Da nap {len(df):,} ban ghi vao {db_path} va xuat {powerbi_csv}!")
 
 if __name__ == '__main__':
     run_database_pipeline()

@@ -119,6 +119,29 @@ pytest test/test_modeling.py -v
 
 ---
 
+---
+
+## 📊 Power BI Executive Dashboard (LiveOps & Business Intelligence)
+
+Dự án phát triển hệ thống Dashboard 3 tầng trên **Power BI Desktop** kết nối trực tiếp với dữ liệu SQLite và kết quả dự báo Machine Learning, phục vụ chiến lược giữ chân người chơi (Retention) cho các Studio Game (case study: Sonat Game):
+
+### 1. Trang 1 — Executive Overview (Báo cáo Cấp Quản lý)
+Bức tranh toàn cảnh về sức khỏe tựa game: Tổng số người chơi (40,034), Tỷ lệ Churn thực tế (25.8%), Tỷ lệ người chơi nạp tiền (19.8%) và Phân khúc người chơi (`VIP Spender`, `Loyal Core`, `At-Risk Casual`, `Churned Inactive`).
+
+![Executive Overview](reports/figures/powerbi_page1_executive_overview.png)
+
+### 2. Trang 2 — Player Behavior (Phân tích Hành vi & Tương tác)
+Đào sâu vào động lực hành vi: Mức độ gắn bó theo từng độ khó game (`Easy`, `Medium`, `Hard`), tương quan giữa thời lượng chơi trung bình và tỷ lệ Churn theo thể loại game (`Action`, `Strategy`, `RPG`, `Sports`, `Simulation`), cùng bộ lọc đa chiều F2P vs Spender.
+
+![Player Behavior](reports/figures/powerbi_page2_player_behavior.png)
+
+### 3. Trang 3 — AI Churn Prediction (Dự báo Churn & Kích hoạt LiveOps)
+Ứng dụng trực tiếp mô hình Machine Learning: Phân tầng rủi ro người chơi (`Critical Risk: 9,414`, `Medium Risk: 598`, `Low Risk: 30,022`), so sánh xác suất rời bỏ giữa Spender và F2P, cùng **Bảng danh sách can thiệp khẩn cấp (Actionable LiveOps Table)** để đội vận hành xuất danh sách gửi Push Notification / Giftcode giữ chân kịp thời.
+
+![AI Churn Prediction](reports/figures/powerbi_page3_ai_prediction.png)
+
+---
+
 ## ⚙️ Cài đặt & Khởi chạy (Quickstart)
 
 ### 1. Khởi tạo môi trường
@@ -133,18 +156,17 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 2. Chạy Kiểm thử
+### 2. Chạy Pipeline Dữ liệu & Khởi tạo Database
 ```bash
-pytest test/test_modeling.py -v
+python src/data_pipeline.py
 ```
 
-### 3. Chạy Notebooks phân tích
+### 3. Chạy Kiểm thử Tự động
 ```bash
-# Chạy Jupyter Lab / Notebook
-jupyter notebook
+pytest test/ -v
 ```
 
-### 4. Khởi chạy Dashboard & API Demo (Sắp ra mắt)
+### 4. Khởi chạy Dashboard & API Demo (Phase 3 - Sắp ra mắt)
 ```bash
 # Chạy Streamlit Dashboard
 streamlit run dashboard/app.py
@@ -152,3 +174,4 @@ streamlit run dashboard/app.py
 # Khởi chạy FastAPI Prediction Service
 uvicorn src.api:app --reload --port 8000
 ```
+
