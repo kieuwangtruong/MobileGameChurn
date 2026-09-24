@@ -1,0 +1,66 @@
+# ==============================================================================
+# .dockerignore for Mobile Game Churn Analytics
+# Exclude unnecessary files to reduce build context size, speed up build,
+# and prevent sensitive/cache files from leaking into the container image.
+# ==============================================================================
+
+# Version Control
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Python Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+bin/
+lib/
+include/
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Jupyter Notebooks & Checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# PowerBI & Heavy Desktop BI Files
+*.pbix
+Analyst Game.pbix
+reports/*.pbix
+
+# Local Export & Dump Files (Not needed in runtime image)
+Targeted LiveOps Action Plan (Export Ready).csv
+*.log
+
+# Unit Tests & Exploratory Scripts (Streamlit runtime does not need test suite)
+test/
+tests/
+
+# Docker Files (Prevent cache invalidation on dockerfile edits)
+Dockerfile*
+docker-compose*.yml
+.dockerignore

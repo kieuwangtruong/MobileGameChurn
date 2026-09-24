@@ -1,0 +1,480 @@
+/* ==========================================================================
+   Mobile Game Churn Analytics & LiveOps Studio - Design System
+   Dual-Theme Engine: Dark Gaming Studio (Default) & Light SaaS Report
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* --- Root Color Variables (Dark Mode Base) --- */
+:root {
+    --bg-canvas: #0B0F19;
+    --bg-card: #111827;
+    --bg-subtle: #1E293B;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+
+    --brand-blue: #6366F1;
+    --brand-blue-light: rgba(99, 102, 241, 0.15);
+    --brand-blue-border: rgba(99, 102, 241, 0.35);
+
+    --status-success: #10B981;
+    --status-success-bg: rgba(16, 185, 129, 0.15);
+    --status-danger: #EF4444;
+    --status-danger-bg: rgba(239, 68, 68, 0.15);
+    --status-warning: #F59E0B;
+    --status-warning-bg: rgba(245, 158, 11, 0.15);
+
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --card-hover-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25);
+}
+
+/* Global Font & Canvas */
+html, body, [class*="css"] {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    letter-spacing: -0.015em;
+}
+
+code, kbd, samp, pre {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+code {
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #A5B4FC !important;
+    border: 1px solid rgba(99, 102, 241, 0.25) !important;
+    border-radius: 6px !important;
+    padding: 2px 6px !important;
+}
+
+.stApp {
+    background: radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 35%),
+                var(--bg-canvas) !important;
+    color: var(--text-primary) !important;
+}
+
+.main .block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 3.5rem !important;
+    max-width: 1440px !important;
+}
+
+/* --- Top Header Navigation --- */
+.tesla-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4px 18px 4px;
+    margin-bottom: 12px;
+}
+
+.tesla-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tesla-logo-text {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #EF4444;
+    text-transform: uppercase;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.tesla-page-title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.tesla-page-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin-top: 3px;
+    margin-bottom: 0;
+}
+
+/* --- Clean Modern SaaS & Studio Cards --- */
+.tesla-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 20px 22px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tesla-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.tesla-card-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tesla-card-val {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+}
+
+.tesla-card-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Trend Badges */
+.tesla-pill {
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.tesla-pill.up {
+    background-color: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.tesla-pill.down {
+    background-color: var(--status-danger-bg);
+    color: var(--status-danger);
+}
+
+.tesla-pill.neutral {
+    background-color: var(--brand-blue-light);
+    color: var(--brand-blue);
+}
+
+/* --- Topic / Feature Progress Bar Rows --- */
+.topic-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 16px;
+}
+
+.topic-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.topic-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.topic-row:last-child {
+    border-bottom: none;
+}
+
+.topic-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.topic-info {
+    flex-grow: 1;
+}
+
+.topic-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.topic-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-subtle);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.topic-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.topic-bar-fill.danger {
+    background: linear-gradient(90deg, #F87171, #EF4444);
+}
+
+.topic-bar-fill.success {
+    background: linear-gradient(90deg, #34D399, #10B981);
+}
+
+.topic-pct {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    min-width: 65px;
+    text-align: right;
+}
+
+/* --- Native Streamlit Container Border Wrapper --- */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--card-shadow) !important;
+    padding: 18px 22px !important;
+    margin-bottom: 16px !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] h4,
+[data-testid="stVerticalBlockBorderWrapper"] h5 {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+}
+
+/* --- Widget Labels (High Contrast Always) --- */
+label,
+label p,
+[data-testid="stWidgetLabel"],
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] span {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+}
+
+/* --- Tabs Styled as Soft Minimalist Nav --- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 10px;
+    background-color: var(--bg-card);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 10px;
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--brand-blue) !important;
+    background-color: var(--brand-blue-light);
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: var(--brand-blue-light) !important;
+    color: var(--brand-blue) !important;
+    font-weight: 700 !important;
+    border: 1px solid var(--brand-blue-border) !important;
+}
+
+/* --- Sidebar Styling --- */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-card) !important;
+    border-right: 1px solid var(--border-subtle) !important;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1.8rem !important;
+}
+
+.sidebar-brand-box {
+    padding: 10px 4px 18px 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-brand-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.sidebar-brand-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+}
+
+/* Action callout box */
+.action-callout {
+    background: var(--brand-blue-light);
+    border: 1px solid var(--brand-blue-border);
+    border-left: 4px solid var(--brand-blue);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+}
+
+.action-callout-title {
+    color: var(--brand-blue);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+
+.action-callout-body {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+/* Badges */
+.badge-tier {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.badge-tier.critical {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.badge-tier.medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #FBBF24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.badge-tier.low {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* --- Regular Buttons --- */
+.stButton > button {
+    background: var(--bg-subtle) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+    transition: all 0.15s ease !important;
+}
+
+.stButton > button:hover {
+    background: rgba(99, 102, 241, 0.15) !important;
+    border-color: #6366F1 !important;
+    color: #818CF8 !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton > button p {
+    color: var(--text-primary) !important;
+}
+
+/* --- Form Submit Button (Hero Action Glowing Gradient) --- */
+div[data-testid="stFormSubmitButton"] > button {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #06B6D4 100%) !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.04em !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 14px 28px !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45) !important;
+    transition: all 0.2s ease-in-out !important;
+    width: 100% !important;
+}
+
+div[data-testid="stFormSubmitButton"] > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.65) !important;
+}
+
+div[data-testid="stFormSubmitButton"] > button p {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+}
+
+/* --- Download Button --- */
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+    padding: 12px 24px !important;
+}
+
+.stDownloadButton > button:hover {
+    background: #1E40AF !important;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45) !important;
+}
+
+/* --- Dataframes Container Clean Rounding --- */
+[data-testid="stDataFrame"] {
+    border-radius: 12px !important;
+    border: 1px solid var(--border-subtle) !important;
+    overflow: hidden !important;
+}
+
+footer {visibility: hidden;}
+#MainMenu {visibility: hidden;}

@@ -8,9 +8,15 @@
 
 ```text
 MobileGameChurn/
+├── .dockerignore             # Danh sách loại trừ khi build Docker image
+├── Dockerfile                # Cấu hình containerization chuẩn Production (non-root, layer caching)
+├── docker-compose.yml        # Khởi chạy toàn bộ hệ thống bằng 1 lệnh
+├── .streamlit/
+│   └── config.toml           # Cấu hình Streamlit theme & production server
 ├── data/
 │   ├── raw/                  # Dữ liệu gốc (online_gaming_behavior_dataset.csv)
-│   └── processed/            # Dữ liệu sau tiền xử lý, scaling & phân chia Train/Test
+│   ├── processed/            # Dữ liệu sau tiền xử lý, scaling & phân chia Train/Test
+│   └── game_analytics.db     # SQLite Database phục vụ query phân tích
 ├── notebooks/
 │   ├── 01_EDA.ipynb          # Phân tích khám phá dữ liệu & tương quan hành vi
 │   ├── 02_FeatureEngineering.ipynb # Trích xuất đặc trưng & chuẩn hóa dữ liệu
@@ -23,7 +29,12 @@ MobileGameChurn/
 │   ├── model.py              # Huấn luyện và lưu trữ mô hình
 │   └── api.py                # FastAPI endpoint phục vụ dự đoán Churn
 ├── reports/                  # Báo cáo, biểu đồ xuất ra
-├── dashboard/                # Ứng dụng dashboard giám sát (Streamlit)
+├── dashboard/                # AI LiveOps & Churn Studio (Clean Architecture)
+│   ├── app.py                # Main Streamlit router & adaptive theme controller
+│   ├── assets/style.css      # Custom CSS Design System (Dark/Light mode)
+│   ├── components/           # Reusable UI (KPI cards, Plotly charts, sidebar)
+│   ├── services/             # Data caching & Inference engine
+│   └── views/                # 4 Core tabs: Executive, Simulator, LiveOps, SHAP
 ├── models/                   # Lưu trữ checkpoint mô hình (.joblib)
 │   ├── best_model.joblib     # Mô hình XGBoost tốt nhất
 │   ├── model_features.joblib # Danh sách 20 đặc trưng chuẩn hóa
@@ -166,12 +177,65 @@ python src/data_pipeline.py
 pytest test/ -v
 ```
 
-### 4. Khởi chạy Dashboard & API Demo (Phase 3 - Production Serving)
+### 4. Khởi chạy Streamlit AI LiveOps Studio
 ```bash
-# Chạy Streamlit Dashboard
 streamlit run dashboard/app.py
+```
 
-# Khởi chạy FastAPI Prediction Service
+### 5. Khởi chạy FastAPI Prediction Service
+```bash
 uvicorn src.api:app --reload --port 8000
 ```
+
+---
+
+## 🎮 Streamlit AI LiveOps & Churn Intelligence Studio
+
+Ứng dụng web được tái cấu trúc theo mô hình **Clean Architecture** chuyên biệt cho đội ngũ LiveOps & Game Product Managers:
+- **Tab 1 — Executive KPIs (Sức khỏe Tựa Game):** Theo dõi 6 chỉ số trọng yếu (Active Players, Actual Churn Rate, Spender Ratio, Avg Playtime, Critical Risk, Revenue at Risk), radar phân tầng rủi ro người chơi và bảng xếp hạng thể loại game có độ giữ chân cao nhất / thấp nhất.
+- **Tab 2 — AI Simulator & What-If Sandbox:** Mô phỏng hồ sơ hành vi người chơi để nhận diện rủi ro tức thì qua mô hình XGBoost. Đặc biệt tích hợp **Module Chiến Lược Chuyên Sâu cho Hardcore F2P Grinder** (tư vấn chiến thuật "phá băng ví" qua gói khởi động siêu nhỏ $0.99, vé mùa Battle Pass thay vì dùng Paywall gây ức chế bỏ game).
+- **Tab 3 — LiveOps Retention Target Center:** Bộ lọc phân khúc rủi ro và trạng thái nạp tiền, tự động ước tính doanh thu giữ chân ($), đồng thời cho phép xuất dữ liệu `CSV sync` sang hệ thống CRM / Push Notification chỉ với 1 cú click.
+- **Tab 4 — Model Explainability (SHAP & Benchmarking):** Bảng so sánh hiệu năng các thuật toán (Logistic Regression, Random Forest, XGBoost) và phân tích TOP 5 đặc trưng quyết định nhất theo lý thuyết trò chơi SHAP.
+- **Dual-Theme Engine:** Hỗ trợ chuyển đổi mượt mà giữa chế độ **Dark Gaming Studio (Mặc định)** và **Light SaaS Report** với độ tương phản cao và thiết kế thẻ tinh tế.
+
+---
+
+## 🐳 Containerization & Docker Deployment (Coming Soon / Sẵn sàng Triển khai)
+
+Dự án đã được thiết lập trọn bộ cấu hình Containerization đạt chuẩn **Production MLOps & DevOps**, sẵn sàng đóng gói và triển khai lên AWS ECS, GCP Cloud Run hoặc Kubernetes:
+
+### 1. Đặc điểm kỹ thuật nổi bật
+- **Base Image:** `python:3.10-slim` tối giản, đảm bảo nhẹ và tương thích hoàn hảo với C-extensions của XGBoost & LightGBM.
+- **Tầng OpenMP & Network:** Tích hợp `libgomp1` cho xử lý đa luồng Machine Learning và `curl` phục vụ giám sát container.
+- **Tối ưu Layer Caching:** Tách biệt cài đặt dependencies (`requirements.txt`) và copy mã nguồn giúp re-build thần tốc khi thay đổi logic ứng dụng.
+- **Bảo mật Non-root User:** Ứng dụng chạy dưới quyền người dùng an toàn `appuser` (UID/GID `10001`), không sử dụng quyền root.
+- **Tự động Giám sát Sức khỏe (Native Healthcheck):** Thăm dò định kỳ endpoint `/_stcore/health` của Streamlit để phát hiện và phục hồi container gặp sự cố.
+
+### 2. Hướng dẫn khởi chạy nhanh bằng Docker Compose (1 lệnh duy nhất)
+```bash
+# Khởi động container ở chế độ nền ngầm (Detached mode)
+docker compose up --build -d
+
+# Theo dõi nhật ký log thời gian thực
+docker compose logs -f
+
+# Dừng hệ thống container
+docker compose down
+```
+
+### 3. Vận hành bằng Docker CLI độc lập
+```bash
+# Build Docker image
+docker build -t mobile-game-churn:latest .
+
+# Khởi chạy container với port 8501
+docker run -d -p 8501:8501 --name game_churn_studio mobile-game-churn:latest
+
+# Kiểm tra trạng thái sức khỏe (Health status)
+docker ps
+docker inspect --format='{{json .State.Health}}' game_churn_studio
+```
+
+Truy cập ứng dụng tại: `http://localhost:8501`
+
 
