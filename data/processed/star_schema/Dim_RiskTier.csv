@@ -1,0 +1,4 @@
+RiskTierKey,RiskTierName,RiskLevelRange,PriorityOrder,DefaultActionPlan
+1,Critical Risk,>= 80%,1,Emergency Retention (VIP Giftcode / Comeback Energy)
+2,Medium Risk,50% - 79%,2,Engagement Push (Daily Login Boost / Double EXP)
+3,Low Risk,< 50%,3,Community & Social (Guild Invites / New Feature Previews)

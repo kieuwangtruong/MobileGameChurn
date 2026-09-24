@@ -166,7 +166,7 @@ python src/data_pipeline.py
 pytest test/ -v
 ```
 
-### 4. Khởi chạy Dashboard & API Demo (Phase 3 - Sắp ra mắt)
+### 4. Khởi chạy Dashboard & API Demo (Phase 3 - Production Serving)
 ```bash
 # Chạy Streamlit Dashboard
 streamlit run dashboard/app.py
