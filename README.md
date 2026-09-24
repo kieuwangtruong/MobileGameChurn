@@ -196,7 +196,7 @@ uvicorn src.api:app --reload --port 8000
 - **Tab 2 — AI Simulator & What-If Sandbox:** Mô phỏng hồ sơ hành vi người chơi để nhận diện rủi ro tức thì qua mô hình XGBoost. Đặc biệt tích hợp **Module Chiến Lược Chuyên Sâu cho Hardcore F2P Grinder** (tư vấn chiến thuật "phá băng ví" qua gói khởi động siêu nhỏ $0.99, vé mùa Battle Pass thay vì dùng Paywall gây ức chế bỏ game).
 - **Tab 3 — LiveOps Retention Target Center:** Bộ lọc phân khúc rủi ro và trạng thái nạp tiền, tự động ước tính doanh thu giữ chân ($), đồng thời cho phép xuất dữ liệu `CSV sync` sang hệ thống CRM / Push Notification chỉ với 1 cú click.
 - **Tab 4 — Model Explainability (SHAP & Benchmarking):** Bảng so sánh hiệu năng các thuật toán (Logistic Regression, Random Forest, XGBoost) và phân tích TOP 5 đặc trưng quyết định nhất theo lý thuyết trò chơi SHAP.
-- **Dual-Theme Engine:** Hỗ trợ chuyển đổi mượt mà giữa chế độ **Dark Gaming Studio (Mặc định)** và **Light SaaS Report** với độ tương phản cao và thiết kế thẻ tinh tế.
+- **Giao diện Cyber Dark Gaming Studio:** Tông màu tối chuyên nghiệp Deep Slate (`#0B0F19`), viền kính mờ, điểm nhấn neon (`#6366F1`, `#06B6D4`, `#10B981`), độ tương phản cao, tối ưu tuyệt đối cho trải nghiệm phân tích LiveOps.
 
 ---
 

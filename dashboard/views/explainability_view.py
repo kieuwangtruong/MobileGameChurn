@@ -6,10 +6,10 @@ import streamlit as st
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
-def render_explainability_view(is_dark: bool = False):
-    """Hiển thị toàn bộ nội dung Tab 4 (Hỗ trợ Dark & Light mode)."""
-    title_color = "#F8FAFC" if is_dark else "#0F172A"
-    sub_color = "#94A3B8" if is_dark else "#475569"
+def render_explainability_view(is_dark: bool = True):
+    """Hiển thị toàn bộ nội dung Tab 4 (Dark Gaming Studio Theme)."""
+    title_color = "#F8FAFC"
+    sub_color = "#94A3B8"
 
     st.markdown(f"""
     <div style="margin-bottom: 24px;">

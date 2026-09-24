@@ -16,8 +16,8 @@ from dashboard.components.charts import (
 )
 
 
-def render_executive_view(df_filtered: pd.DataFrame, is_dark: bool = False):
-    """Hiển thị toàn bộ nội dung Tab 1 (Đã sửa triệt để lỗi đè chữ biểu đồ)."""
+def render_executive_view(df_filtered: pd.DataFrame, is_dark: bool = True):
+    """Hiển thị toàn bộ nội dung Tab 1 (Dark Gaming Studio Theme)."""
     if df_filtered.empty:
         st.warning("⚠️ Không tìm thấy người chơi nào khớp với bộ lọc hiện tại. Vui lòng mở rộng điều kiện lọc ở Sidebar.")
         return

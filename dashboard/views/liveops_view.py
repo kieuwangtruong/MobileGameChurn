@@ -3,10 +3,10 @@ import pandas as pd
 import streamlit as st
 
 
-def render_liveops_view(df_players: pd.DataFrame, is_dark: bool = False):
-    """Hiển thị toàn bộ nội dung Tab 3 (Hỗ trợ Dark & Light mode)."""
-    title_color = "#F8FAFC" if is_dark else "#0F172A"
-    sub_color = "#94A3B8" if is_dark else "#475569"
+def render_liveops_view(df_players: pd.DataFrame, is_dark: bool = True):
+    """Hiển thị toàn bộ nội dung Tab 3 (Dark Gaming Studio Theme)."""
+    title_color = "#F8FAFC"
+    sub_color = "#94A3B8"
 
     st.markdown(f"""
     <div style="margin-bottom: 24px;">

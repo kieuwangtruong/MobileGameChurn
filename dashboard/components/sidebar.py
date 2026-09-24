@@ -15,19 +15,12 @@ def render_sidebar(df_players: pd.DataFrame) -> Tuple[pd.DataFrame, bool]:
         </div>
         """, unsafe_allow_html=True)
 
-        # 1. Bộ chuyển đổi Theme (Dark / Light Mode)
-        st.markdown("##### 🎨 CHẾ ĐỘ HIỂN THỊ")
-        theme_mode = st.radio(
-            "Chọn theme:",
-            ["🌙 Dark Mode", "☀️ Light Mode"],
-            index=0,
-            horizontal=True,
-            label_visibility="collapsed",
-            key="theme_mode_radio"
-        )
-        is_dark = "Dark" in theme_mode
-
-        st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 10px; padding: 8px 12px; margin-bottom: 18px; font-size: 0.78rem; color: #A5B4FC; display: flex; align-items: center; gap: 6px; font-weight: 600;">
+            <span>🌙</span> Cyber Dark Studio Active
+        </div>
+        """, unsafe_allow_html=True)
+        is_dark = True
         st.markdown("##### 🎛️ BỘ LỌC DỮ LIỆU")
 
         all_genres = sorted(df_players['GameGenre'].dropna().unique().tolist())

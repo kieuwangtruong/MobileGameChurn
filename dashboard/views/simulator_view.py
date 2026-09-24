@@ -5,10 +5,10 @@ from dashboard.services.inference_service import get_simulation_presets, ChurnPr
 from dashboard.components.charts import create_gauge_meter
 
 
-def render_simulator_view(predictor: ChurnPredictor, is_dark: bool = False):
-    """Hiển thị toàn bộ nội dung Tab 2 (Đã sửa lỗi đè chữ đồng hồ đo và hỗ trợ Dark mode)."""
-    title_color = "#F8FAFC" if is_dark else "#0F172A"
-    sub_color = "#94A3B8" if is_dark else "#475569"
+def render_simulator_view(predictor: ChurnPredictor, is_dark: bool = True):
+    """Hiển thị toàn bộ nội dung Tab 2 (Dark Gaming Studio Theme)."""
+    title_color = "#F8FAFC"
+    sub_color = "#94A3B8"
 
     st.markdown(f"""
     <div style="margin-bottom: 24px;">

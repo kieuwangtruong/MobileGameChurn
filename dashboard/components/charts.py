@@ -5,8 +5,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-def get_theme_palette(is_dark: bool = False):
-    """Lấy bảng màu tương thích Dark/Light mode."""
+def get_theme_palette(is_dark: bool = True):
+    """Lấy bảng màu Cyber Dark Gaming Mode (Mặc định)."""
     if is_dark:
         return {
             "bg": "rgba(0,0,0,0)",
@@ -28,15 +28,15 @@ def get_theme_palette(is_dark: bool = False):
     else:
         return {
             "bg": "rgba(0,0,0,0)",
-            "text_primary": "#0F172A",
-            "text_secondary": "#64748B",
-            "grid_color": "#F1F5F9",
-            "hover_bg": "#FFFFFF",
-            "hover_border": "#E2E8F0",
-            "hover_text": "#0F172A",
-            "gauge_bg": "#F1F5F9",
-            "gauge_tick": "#64748B",
-            "donut_border": "#FFFFFF",
+            "text_primary": "#F8FAFC",
+            "text_secondary": "#CBD5E1",
+            "grid_color": "rgba(255, 255, 255, 0.08)",
+            "hover_bg": "#1F2937",
+            "hover_border": "rgba(255, 255, 255, 0.15)",
+            "hover_text": "#FFFFFF",
+            "gauge_bg": "rgba(255, 255, 255, 0.06)",
+            "gauge_tick": "#94A3B8",
+            "donut_border": "#111827",
             "risk_map": {
                 "Low Risk": "#10B981",
                 "Medium Risk": "#F59E0B",
@@ -48,7 +48,7 @@ def get_theme_palette(is_dark: bool = False):
 def apply_chart_theme(
     fig: go.Figure,
     height: int = 310,
-    is_dark: bool = False
+    is_dark: bool = True
 ) -> go.Figure:
     """Áp dụng theme tương thích Dark/Light và loại bỏ hoàn toàn đè chữ tiêu đề."""
     palette = get_theme_palette(is_dark)

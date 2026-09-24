@@ -196,103 +196,14 @@ if is_dark:
     }
     </style>
     """, unsafe_allow_html=True)
-else:
-    st.markdown("""
-    <style>
-    :root {
-        --bg-canvas: #F4F6FA !important;
-        --bg-card: #FFFFFF !important;
-        --bg-subtle: #F8FAFC !important;
-        --border-color: #E2E8F0 !important;
-        --border-subtle: #EEF2F6 !important;
-        --text-primary: #0F172A !important;
-        --text-secondary: #475569 !important;
-        --text-muted: #94A3B8 !important;
-        --brand-blue: #2563EB !important;
-        --brand-blue-light: #EFF6FF !important;
-        --brand-blue-border: #BFDBFE !important;
-    }
-    .stApp {
-        background: #F4F6FA !important;
-        color: #0F172A !important;
-    }
-    section[data-testid="stSidebar"] {
-        background-color: #FFFFFF !important;
-        border-right: 1px solid #E2E8F0 !important;
-    }
-    [data-testid="stVerticalBlockBorderWrapper"], .tesla-card, .topic-container {
-        background-color: #FFFFFF !important;
-        border: 1px solid #EEF2F6 !important;
-        box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04) !important;
-    }
-    .tesla-page-title, .topic-title, .tesla-card-val,
-    [data-testid="stVerticalBlockBorderWrapper"] h4,
-    [data-testid="stVerticalBlockBorderWrapper"] h5 {
-        color: #0F172A !important;
-    }
-    .tesla-page-subtitle, .tesla-card-label {
-        color: #475569 !important;
-    }
-    label, label p, [data-testid="stWidgetLabel"], [data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] span {
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }
-    div[data-testid="stRadio"] label p, div[data-testid="stRadio"] label span {
-        color: #0F172A !important;
-        font-weight: 500 !important;
-    }
-    div[data-baseweb="select"] > div,
-    div[data-baseweb="input"] > div,
-    div[data-baseweb="base-input"],
-    div[data-baseweb="input"] input,
-    div[data-baseweb="base-input"] input {
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        color: #0F172A !important;
-        border-radius: 10px !important;
-    }
-    div[data-baseweb="select"] span {
-        color: #0F172A !important;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        background-color: #FFFFFF !important;
-        border: 1px solid #E2E8F0 !important;
-    }
-    .stTabs [data-baseweb="tab"] {
-        color: #475569 !important;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #EFF6FF !important;
-        color: #2563EB !important;
-        border: 1px solid #BFDBFE !important;
-    }
-    .action-callout {
-        background: #EFF6FF !important;
-        border: 1px solid #BFDBFE !important;
-        border-left: 4px solid #2563EB !important;
-    }
-    .action-callout-title {
-        color: #2563EB !important;
-    }
-    .action-callout-body {
-        color: #0F172A !important;
-    }
-    [data-testid="stDataFrame"] {
-        filter: invert(0.92) hue-rotate(180deg) !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
-# 6. Header phong cách Tesla Reports
-title_col = "#F8FAFC" if is_dark else "#0F172A"
-sub_col = "#94A3B8" if is_dark else "#475569"
-
-st.markdown(f"""
+# 6. Header phong cách Cyber Gaming Studio
+st.markdown("""
 <div class="tesla-header-bar">
     <div class="tesla-header-left">
         <div>
-            <h1 class="tesla-page-title" style="color: {title_col};">Reports & LiveOps Intelligence</h1>
-            <p class="tesla-page-subtitle" style="color: {sub_col};">
+            <h1 class="tesla-page-title" style="color: #F8FAFC;">Reports & LiveOps Intelligence</h1>
+            <p class="tesla-page-subtitle" style="color: #94A3B8;">
                 Mobile Game Player Retention, Churn Risk Radar & Targeted LiveOps Studio
             </p>
         </div>
