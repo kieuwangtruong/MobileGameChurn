@@ -13,6 +13,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     STREAMLIT_SERVER_PORT=8501 \
     STREAMLIT_SERVER_ADDRESS=0.0.0.0 \
     STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_SERVER_ENABLE_CORS=false \
+    STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 # 3. Working Directory
@@ -47,16 +49,14 @@ RUN chown -R appuser:appgroup /app /home/appuser
 # 10. Switch to Non-Root User for security compliance
 USER appuser
 
-# 11. Expose Streamlit Default Port
+# 11. Expose Default Port (Can be overridden by Render via $PORT)
+ENV PORT=8501
 EXPOSE 8501
 
-# 12. Healthcheck: Query Streamlit's native health endpoint
+# 12. Healthcheck: Query Streamlit's native health endpoint (supports dynamic $PORT)
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-    CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+    CMD curl --fail http://localhost:${PORT:-8501}/_stcore/health || exit 1
 
-# 13. Application Entrypoint
-CMD ["streamlit", "run", "dashboard/app.py", \
-     "--server.port=8501", \
-     "--server.address=0.0.0.0", \
-     "--server.headless=true", \
-     "--browser.gatherUsageStats=false"]
+# 13. Application Entrypoint: Support Render dynamic $PORT and local 8501 default
+CMD ["sh", "-c", "streamlit run dashboard/app.py --server.port=${PORT:-8501} --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false --browser.gatherUsageStats=false"]
+
