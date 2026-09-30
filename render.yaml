@@ -6,7 +6,7 @@
 
 services:
   - type: web
-    name: mobile-game-churn-studio
+    name: mobilegamechurn
     env: python
     plan: free
     buildCommand: pip install --upgrade pip && pip install -r requirements.txt
