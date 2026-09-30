@@ -2,11 +2,11 @@
 
 > **End-to-end Data Science & Machine Learning Pipeline for Mobile Games** — Exploratory Data Analysis (EDA), domain-driven feature engineering, XGBoost modeling (95.45% Accuracy), SHAP explainability, automated unit testing, and deployment.
 
-[![Render Live Demo](https://img.shields.io/badge/Render-Live_Demo-46E3B7?logo=render&logoColor=white)](https://mobilegamechurn.onrender.com)
-[![Streamlit](https://img.shields.io/badge/Streamlit-LiveOps_Studio-FF4B4B?logo=streamlit&logoColor=white)](https://mobilegamechurn.onrender.com)
+[![Render Live Demo](https://img.shields.io/badge/Render-Live_Demo-46E3B7?logo=render&logoColor=white)](https://mobile-game-churn-studio.onrender.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-LiveOps_Studio-FF4B4B?logo=streamlit&logoColor=white)](https://mobile-game-churn-studio.onrender.com)
 [![Docker Ready](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://github.com/kieuwangtruong/MobileGameChurn/blob/main/Dockerfile)
 
-> 🌐 **Live Cloud Demo:** [https://mobilegamechurn.onrender.com](https://mobilegamechurn.onrender.com)  
+> 🌐 **Live Cloud Demo:** [https://mobile-game-churn-studio.onrender.com](https://mobile-game-churn-studio.onrender.com)  
 > 🎮 **Trải nghiệm trực tuyến:** Trực quan hóa KPIs, mô phỏng xác suất Churn theo thời gian thực (XGBoost) và đề xuất kế hoạch can thiệp LiveOps giữ chân người chơi.
 
 
